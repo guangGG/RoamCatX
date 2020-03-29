@@ -1,0 +1,9 @@
+<resources>
+    <string name="textv_app_name">TextViewer</string>
+
+    <declare-styleable name="VastTextView">
+        <attr name="textv_text_color" format="color|reference" />
+        <attr name="textv_text_size" format="dimension|reference" />
+        <attr name="textv_page_size" format="integer" />
+    </declare-styleable>
+</resources>

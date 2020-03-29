@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: '../gradle/config/dependencies.gradle'
+android {
+    compileSdkVersion project.compileSdkVersion as int
+    buildToolsVersion project.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion project.libMinSdkVersion as int
+        targetSdkVersion project.libTargetSdkVersion as int
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+        // 指定room.schemaLocation生成的文件路径
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas".toString())
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$project.appcompatVersion"
+    implementation "androidx.core:core-ktx:$project.coreKtxVersion"
+    testImplementation "junit:junit:$project.junitVersion"
+    androidTestImplementation "androidx.test:runner:$project.runnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$project.espressoVersion"
+
+    implementation "gapp.season:EncryptLib:$project.ggEncryptLibVersion"
+    implementation project(':util') //implementation 'gapp.season:SeasonUtil:x.x.x'
+    implementation "com.google.code.gson:gson:$project.gsonVersion"
+    // RecyclerView And Adapter
+    implementation "com.google.android.material:material:$project.materialVersion"
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$project.ccRecyclerAdapterVersion"
+    // 生物识别(最低兼容到API-14)
+    implementation "androidx.biometric:biometric:1.0.1"
+    // database
+    implementation "androidx.room:room-runtime:$project.roomVersion"
+    implementation "androidx.room:room-rxjava2:$project.roomVersion"
+    implementation "androidx.room:room-ktx:$project.roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$project.roomVersion"
+    kapt "androidx.room:room-compiler:$project.roomVersion"
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxjavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxandroidVersion"
+    // xpopup
+    implementation "com.lxj:xpopup:$project.xpopupVersion"
+}

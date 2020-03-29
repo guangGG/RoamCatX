@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:padding="2dp">
+
+    <ImageView
+        android:id="@+id/filesel_icon"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/filesel_format_folder" />
+
+    <TextView
+        android:id="@+id/filesel_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/filesel_icon"
+        android:layout_centerHorizontal="true"
+        android:singleLine="true"
+        android:textColor="#666666"
+        android:textSize="12sp"
+        tools:text="a\nb\nc\nd" />
+
+    <View
+        android:layout_width="39dp"
+        android:layout_height="28dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="#88ffffff" />
+
+    <TextView
+        android:id="@+id/filesel_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="?attr/selectableItemBackground"
+        android:padding="5dp"
+        android:text="选择"
+        android:textColor="#0088ff"
+        android:textSize="14sp" />
+</RelativeLayout>

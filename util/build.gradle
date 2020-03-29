@@ -1,0 +1,16 @@
+// 如果使用已发布包使用"library+api"方式引入，如果使用未发布版本的aar则使用"configurations+artifacts"方式引入
+// 备注：使用"library+api"方式导入时打release包会报错“Program type already present” of SeasonUtil
+// 源码地址： https://github.com/guangGG/AndroidUtilLib
+
+// aar-version(commit) : v0.0.3(4e7a50c)
+configurations.maybeCreate("default")
+artifacts.add("default", file('SeasonUtil.aar'))
+
+//apply plugin: 'com.android.library'
+//android {
+//    compileSdkVersion 29
+//    buildToolsVersion "29.0.1"
+//}
+//dependencies {
+//    api 'gapp.season:SeasonUtil:0.0.3'
+//}

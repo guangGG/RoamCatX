@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFDDDDDD"
+    android:orientation="vertical"
+    tools:context=".DrawBoardActivity"
+    tools:ignore="PxUsage">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#757575">
+
+        <ImageView
+            android:id="@+id/drawbBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <TextView
+            android:id="@+id/drawbTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/drawbBack"
+            android:layout_toRightOf="@+id/drawbBack"
+            android:text="画板"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/drawbMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="?attr/selectableItemBackground"
+            android:padding="5dp"
+            android:text="菜单"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:onClick="drawbClickBLACK" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#444444"
+            android:onClick="drawbClickDKGRAY" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#888888"
+            android:onClick="drawbClickGRAY" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#CCCCCC"
+            android:onClick="drawbClickLTGRAY" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:onClick="drawbClickWHITE" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:onClick="drawbClickRED" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00FF00"
+            android:onClick="drawbClickGREEN" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0000FF"
+            android:onClick="drawbClickBLUE" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFF00"
+            android:onClick="drawbClickYELLOW" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00FFFF"
+            android:onClick="drawbClickCYAN" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FF00FF"
+            android:onClick="drawbClickMAGENTA" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="drawbClickW1">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="drawbClickW3">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="drawbClickW5">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="drawbClickW7">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="7px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="drawbClickW9">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="9px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="drawbClickW12">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="12px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="drawbClickW15">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="drawbClickW18">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="18px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="drawbClickW21">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="21px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="drawbClickW25">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="25px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="drawbClickW30">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#FFA0A0A0" />
+
+    <me.panavtec.drawableview.DrawableView
+        android:id="@+id/drawbPaintView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#FFA0A0A0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/drawbColorView"
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp">
+
+            <View
+                android:id="@+id/drawbWidthView"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:onClick="drawbClickUndo"
+            android:text="回退" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:onClick="drawbClickClear"
+            android:text="清空" />
+    </LinearLayout>
+</LinearLayout>

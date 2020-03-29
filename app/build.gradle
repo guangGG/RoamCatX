@@ -1,0 +1,261 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: '../gradle/config/dependencies.gradle'
+apply from: '../gradle/config/properties.gradle' //替换测试签名
+android {
+    compileSdkVersion project.compileSdkVersion as int
+    buildToolsVersion project.buildToolsVersion
+    defaultConfig {
+        applicationId project.applicationId
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode project.versionCode as int
+        versionName project.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        buildConfigField("Boolean", "DEV", "Boolean.valueOf(" + project.dev + ")")
+        buildConfigField("String", "BUILD_TIME", "\"" + buildTime(true) + "\"")
+
+        ndk {
+            //CPU指令集："armeabi", "armeabi-v7a" , "arm64-v8a", "x86", "x86_64", "mips", "mips64"
+            abiFilters "armeabi-v7a"
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(project.storeFile)
+            storePassword project.storePassword
+            keyAlias project.keyAlias
+            keyPassword project.keyPassword
+
+            android.applicationVariants.all { variant ->
+                if (variant.buildType.name == 'release') {
+                    //重命名并存档apk
+                    variant.outputs.all { output ->
+                        def relRootDir = variant.packageApplicationProvider.get().outputDirectory.toPath()
+                                .relativize(rootDir.toPath()).toFile()
+                        def btype = Boolean.valueOf(project.dev) ? "_dev" : ""
+                        def btime = buildTime(false)
+                        def filename = "${project.applicationId}_v${project.versionName}.${project.versionCode}_${btime}${btype}.apk"
+                        output.outputFileName = new File("${relRootDir}/${project.name}/archive/build_${project.versionCode}", filename)
+                    }
+                    //存档mapping文件
+                    variant.assembleProvider.get().doLast {
+                        def flavorNameFolderName = (variant.flavorName) ? "${variant.flavorName}/" : ""
+                        try {
+                            copy {
+                                from("build/outputs/mapping/${flavorNameFolderName}release") {
+                                    include 'mapping.txt'
+                                }
+                                into "archive/build_${project.versionCode}/"
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace()
+                        }
+                    }
+                }
+            }
+        }
+        debug {
+            storeFile file(project.storeFile)
+            storePassword project.storePassword
+            keyAlias project.keyAlias
+            keyPassword project.keyPassword
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true //是否开启混淆，是否开启删除无用代码
+            shrinkResources true //是否开启删除无用资源(minifyEnabled为true时设置有效)
+            zipAlignEnabled true //是否开启资源文件通过内存映射对齐到4字节边界
+            pseudoLocalesEnabled true //是否在APK中生成伪语言环境(国际化时用到)
+            signingConfig signingConfigs.release //应用签名配置
+            //混淆配置
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    /*lintOptions {
+        // 设置为 true时lint将不报告分析的进度
+        quiet false
+        // 如果为 true，则当lint发现错误时停止 gradle构建
+        abortOnError true
+        // 如果为 true，则只报告错误
+        ignoreWarnings false
+        // 如果为 true，则当有错误时会显示文件的全路径或绝对路径 (默认情况下为true)
+        absolutePaths true
+        // 如果为 true，则检查所有的问题，包括默认不检查问题
+        checkAllWarnings true
+        // 如果为 true，则将所有警告视为错误
+        warningsAsErrors false
+        // 不检查给定的问题id
+        disable 'TypographyFractions', 'TypographyQuotes'
+        // 检查给定的问题id
+        enable 'RtlHardcoded', 'RtlCompat', 'RtlEnabled'
+        // * 仅 * 检查给定的问题id
+        check 'NewApi', 'InlinedApi'
+        // 如果为true，则在错误报告的输出中不包括源代码行
+        noLines false
+        // 如果为 true，则对一个错误的问题显示它所在的所有地方，而不会截断列表
+        showAll true
+        // 重置 lint 配置（使用默认的严重性等设置）
+        lintConfig file("default-lint.xml")
+        // 如果为 true，生成一个问题的纯文本报告（默认为false）
+        textReport true
+        // 配置写入输出结果的位置；它可以是一个文件或 “stdout”（标准输出）
+        textOutput 'stdout'
+        // 如果为真，会生成一个XML报告，以给Jenkins之类的使用
+        xmlReport true
+        // 用于写入报告的文件（如果不指定，默认为lint-results.xml）
+        xmlOutput file("lint-report.xml")
+        // 如果为真，会生成一个HTML报告（包括问题的解释，存在此问题的源码，等等）
+        htmlReport true
+        // 写入报告的路径，它是可选的（默认为构建目录下的 lint-results.html ）
+        htmlOutput file("lint-report.html")
+        // 如果设置为 true， 将使所有release 构建都以issus的严重性级别为fatal（severity=false）的设置来运行lint
+        // 并且，如果发现了致命（fatal）的问题，将会中止构建（由上面提到的 abortOnError 控制）
+        checkReleaseBuilds true
+        // 设置给定问题的严重级别（severity）为fatal （这意味着他们将会
+        // 在release构建的期间检查 （即使 lint 要检查的问题没有包含在代码中)
+        fatal 'NewApi', 'InlineApi'
+        // 设置给定问题的严重级别为error
+        error 'Wakelock', 'TextViewEdits'
+        // 设置给定问题的严重级别为warning
+        warning 'ResourceAsColor'
+        // 设置给定问题的严重级别（severity）为ignore （和不检查这个问题一样）
+        ignore 'TypographyQuotes'
+    }*/
+}
+
+repositories {
+    //引用bintray仓库时，若还未添加到Jcenter成功时，可配置私有仓库地址使用
+    maven { url 'https://dl.bintray.com/guanggg/maven' }
+    //引用libs中的依赖包
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$project.appcompatVersion"
+    implementation "androidx.core:core-ktx:$project.coreKtxVersion"
+    testImplementation "junit:junit:$project.junitVersion"
+    androidTestImplementation "androidx.test:runner:$project.runnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$project.espressoVersion"
+
+    // google
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation "androidx.multidex:multidex:2.0.1"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation 'com.google.android:flexbox:1.1.0'
+    implementation "com.google.android.material:material:$project.materialVersion"
+    implementation "com.google.code.gson:gson:$project.gsonVersion"
+    implementation "androidx.exifinterface:exifinterface:$project.exifinterfaceVersion"
+
+    // season (https://github.com/guangGG)
+    implementation project(':util') //implementation 'gapp.season:SeasonUtil:x.x.x'
+    implementation "gapp.season:EncryptLib:$project.ggEncryptLibVersion"
+    implementation 'gapp.season:bookreader:1.0.2'
+    implementation 'gapp.season:skystar:1.0.0'
+    implementation(name: 'Poem', ext: 'aar')
+    // plugin lib
+    implementation project(':web')
+    implementation project(':videoplayer')
+    implementation project(':qrcode')
+    implementation project(':manageapps')
+    implementation project(':fileselector')
+    implementation project(':imageviewer')
+    implementation project(':textviewer')
+    implementation project(':mediastore')
+    implementation project(':calender')
+    implementation project(':sudoku')
+    implementation project(':drawboard')
+    implementation project(':filemanager')
+    implementation project(':musicplayer')
+    implementation project(':notepad')
+    implementation project(':calculator')
+    implementation project(':nerverabbit')
+    implementation project(':fileclear')
+
+    // logger
+    implementation "com.jakewharton.timber:timber:4.7.1"
+
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxjavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxandroidVersion"
+
+    // network
+    implementation "com.squareup.okhttp3:okhttp:$project.okhttp3Version"
+    implementation "com.amitshekhar.android:rx2-android-networking:$project.rx2AndroidNetworkingVersion"
+    // stetho
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+
+    // EventBus
+    implementation "org.greenrobot:eventbus:3.1.1"
+
+    // RecyclerView Adapter
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$project.ccRecyclerAdapterVersion"
+
+    // mmkv
+    implementation "com.tencent:mmkv:$project.mmkvVersion"
+
+    // immersionbar
+    implementation "com.gyf.immersionbar:immersionbar:3.0.0"
+    implementation "com.gyf.immersionbar:immersionbar-components:3.0.0"
+    implementation "com.gyf.immersionbar:immersionbar-ktx:3.0.0"
+
+    // PermissionsDispatcher
+    implementation "com.github.hotchemi:permissionsdispatcher:3.3.2"
+    kapt "com.github.hotchemi:permissionsdispatcher-processor:3.3.2"
+
+    // database
+    implementation "androidx.room:room-runtime:$project.roomVersion"
+    implementation "androidx.room:room-rxjava2:$project.roomVersion"
+    implementation "androidx.room:room-ktx:$project.roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$project.roomVersion"
+    kapt "androidx.room:room-compiler:$project.roomVersion"
+
+    // xpopup
+    implementation "com.lxj:xpopup:$project.xpopupVersion"
+    // qmui
+    implementation "com.qmuiteam:qmui:1.4.0"
+    // Barcode
+    implementation "cn.bingoogolapple:bga-qrcode-zxing:$project.bgaQrcodeVersion"
+    // OnActivityResult
+    implementation "com.vanniktech:onactivityresult:0.7.0"
+    annotationProcessor "com.vanniktech:onactivityresult-compiler:0.7.0"
+    // DSBridge
+    implementation 'com.github.wendux:DSBridge-Android:3.0-SNAPSHOT'
+    // BottomNavigationViewEx
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
+    // doraemonkit
+    debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:3.0.0'
+    releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:3.0.0'
+    // pinyin
+    implementation 'com.github.promeg:tinypinyin:2.0.3'
+    implementation 'com.github.promeg:tinypinyin-lexicons-android-cncity:2.0.3'
+    //implementation 'com.belerweb:pinyin4j:2.5.0' //PinyinHelper
+}
+
+static def buildTime(definiteTime) {
+    if (Boolean.valueOf(definiteTime))
+        return new Date().format("yyyy-MM-dd HH:mm:ss", TimeZone.getTimeZone("GMT+08:00"))
+    else
+        return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("GMT+08:00"))
+}

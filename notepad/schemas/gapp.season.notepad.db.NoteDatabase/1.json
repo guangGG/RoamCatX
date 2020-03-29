@@ -1,0 +1,64 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "6c481ef269e29131f2fd21acbfd95600",
+    "entities": [
+      {
+        "tableName": "NOTE_ENTITY",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`NOTE_ID` TEXT NOT NULL, `CREATE_TIME` INTEGER NOT NULL, `TITLE` TEXT, `CONTENT` TEXT, `MODIFY_TIME` INTEGER NOT NULL, `PRIVACY` INTEGER NOT NULL, PRIMARY KEY(`NOTE_ID`))",
+        "fields": [
+          {
+            "fieldPath": "noteId",
+            "columnName": "NOTE_ID",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createTime",
+            "columnName": "CREATE_TIME",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "TITLE",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content",
+            "columnName": "CONTENT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "modifyTime",
+            "columnName": "MODIFY_TIME",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "privacy",
+            "columnName": "PRIVACY",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "NOTE_ID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6c481ef269e29131f2fd21acbfd95600')"
+    ]
+  }
+}

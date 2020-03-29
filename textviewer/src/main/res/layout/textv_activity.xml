@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#757575">
+
+        <ImageView
+            android:id="@+id/textvBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <TextView
+            android:id="@+id/textvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/textvCharset"
+            android:layout_toLeftOf="@+id/textvCharset"
+            android:layout_toEndOf="@+id/textvBack"
+            android:layout_toRightOf="@+id/textvBack"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:maxLines="2"
+            android:text="文本阅读器"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textvProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="?attr/selectableItemBackground"
+            android:padding="5dp"
+            android:text="进度"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textvCharset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toStartOf="@+id/textvProgress"
+            android:layout_toLeftOf="@+id/textvProgress"
+            android:background="?attr/selectableItemBackground"
+            android:padding="5dp"
+            android:text="编码"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <gapp.season.textviewer.VastTextView
+            android:id="@+id/textvView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:textv_page_size="5000"
+            app:textv_text_color="#666666"
+            app:textv_text_size="12sp" />
+
+        <LinearLayout
+            android:id="@+id/textvProgressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <SeekBar
+                android:id="@+id/textvProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#88757575"
+                android:max="10000"
+                android:padding="10dp"
+                android:progress="0"
+                android:progressBackgroundTint="#DDDDDD"
+                android:progressTint="@android:color/white"
+                android:thumbTint="@android:color/white"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

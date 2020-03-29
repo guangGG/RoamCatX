@@ -1,0 +1,290 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    android:orientation="vertical"
+    tools:ignore="ContentDescription,HardcodedText,ButtonStyle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#757575">
+
+        <ImageView
+            android:id="@+id/calcBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <TextView
+            android:id="@+id/calcTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/calcBack"
+            android:layout_toRightOf="@+id/calcBack"
+            android:text="计算器"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:ellipsize="middle"
+            android:gravity="center_vertical|end"
+            android:singleLine="true"
+            android:text="m = "
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/calcMr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            tools:text="0.235" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:ellipsize="middle"
+            android:gravity="center_vertical|end"
+            android:singleLine="true"
+            android:text="结果 = "
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/calcExpResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            tools:text="23.00213" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/calcExp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center_vertical|end"
+        android:padding="5dp"
+        android:textSize="20sp"
+        tools:text="1201.320+895*5*8/9+566-45/2+45/7+-45*5454/4521+5622" />
+
+    <TextView
+        android:id="@+id/calcExpAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textColor="#666666"
+        android:textSize="12sp"
+        android:visibility="visible"
+        tools:text="1201.320+895*5*8/9+566-45/2+45/7+-45*5454/4521+56221201.320+895*5*8/9+566-45/2+45/7+-45*5454/4521+5622" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/calc_btn_function_copy"
+                android:layout_weight="1"
+                android:text="复制" />
+
+            <Button
+                android:id="@+id/calc_btn_function_paste"
+                android:layout_weight="1"
+                android:text="粘贴" />
+
+            <Button
+                android:id="@+id/calc_btn_function_backspace"
+                android:layout_weight="1"
+                android:text="退格" />
+            <!-- ← -->
+
+            <Button
+                android:id="@+id/calc_btn_function_clear"
+                android:layout_weight="1"
+                android:text="C"
+                android:textColor="#FF0000" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/calc_btn_function_mc"
+                android:layout_weight="1"
+                android:text="mc" />
+
+            <Button
+                android:id="@+id/calc_btn_function_madd"
+                android:layout_weight="1"
+                android:text="m+" />
+
+            <Button
+                android:id="@+id/calc_btn_function_mminus"
+                android:layout_weight="1"
+                android:text="m-" />
+
+            <Button
+                android:id="@+id/calc_btn_function_mr"
+                android:layout_weight="1"
+                android:text="mr" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/calc_btn_sign_pai"
+                android:layout_weight="1"
+                android:text="π" />
+
+            <Button
+                android:id="@+id/calc_btn_sign_bracket_left"
+                android:layout_weight="1"
+                android:text="(" />
+
+            <Button
+                android:id="@+id/calc_btn_sign_bracket_right"
+                android:layout_weight="1"
+                android:text=")" />
+
+            <Button
+                android:id="@+id/calc_btn_function_switch"
+                android:layout_weight="1"
+                android:text="●"
+                tools:text="开关:●" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/calc_btn_num_7"
+                android:layout_weight="1"
+                android:text="7" />
+
+            <Button
+                android:id="@+id/calc_btn_num_8"
+                android:layout_weight="1"
+                android:text="8" />
+
+            <Button
+                android:id="@+id/calc_btn_num_9"
+                android:layout_weight="1"
+                android:text="9" />
+
+            <Button
+                android:id="@+id/calc_btn_sign_division"
+                android:layout_weight="1"
+                android:text="÷" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/calc_btn_num_4"
+                android:layout_weight="1"
+                android:text="4" />
+
+            <Button
+                android:id="@+id/calc_btn_num_5"
+                android:layout_weight="1"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/calc_btn_num_6"
+                android:layout_weight="1"
+                android:text="6" />
+
+            <Button
+                android:id="@+id/calc_btn_sign_multiply"
+                android:layout_weight="1"
+                android:text="×" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/calc_btn_num_1"
+                android:layout_weight="1"
+                android:text="1" />
+
+            <Button
+                android:id="@+id/calc_btn_num_2"
+                android:layout_weight="1"
+                android:text="2" />
+
+            <Button
+                android:id="@+id/calc_btn_num_3"
+                android:layout_weight="1"
+                android:text="3" />
+
+            <Button
+                android:id="@+id/calc_btn_sign_minus"
+                android:layout_weight="1"
+                android:text="-" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/calc_btn_num_0"
+                android:layout_weight="1"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/calc_btn_sign_point"
+                android:layout_weight="1"
+                android:text="." />
+
+            <Button
+                android:id="@+id/calc_btn_sign_equal"
+                android:layout_weight="1"
+                android:text="=" />
+
+            <Button
+                android:id="@+id/calc_btn_sign_add"
+                android:layout_weight="1"
+                android:text="+" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

@@ -1,0 +1,40 @@
+<resources>
+    <color name="web_color_primary">#757575</color>
+    <color name="web_color_accent">#0088FF</color>
+    <color name="web_white">#FFFFFF</color>
+    <color name="web_color_999">#999999</color>
+
+    <string name="web_app_name">WebBrowser</string>
+    <string name="web_btn_ok">OK</string>
+    <string name="web_btn_cancel">Cancel</string>
+    <string name="web_btn_edit">Edit</string>
+    <string name="web_btn_rename">Rename</string>
+    <string name="web_btn_delete">Delete</string>
+    <string name="web_copy_success">Copy success</string>
+    <string name="web_geolocation_permission_tips">Allow the page to retrieve your location information?</string>
+    <string name="web_save_image">Save Image</string>
+    <string name="web_save_image_s">Image saved successfully</string>
+    <string name="web_save_image_f">Image save failed</string>
+    <string name="web_select_file_f">Select file failed</string>
+    <string name="web_tool_add_mark">Bookmarked</string>
+    <string name="web_tool_marks">Bookmarks</string>
+    <string name="web_tool_history">History</string>
+    <string name="web_tool_refresh">Refresh</string>
+    <string name="web_tool_share">Share</string>
+    <string name="web_tool_detail">Detail</string>
+    <string name="web_tool_clear_cache">Clear Cache</string>
+    <string name="web_tool_input_url">Input Url</string>
+    <string name="web_tool_close_menu">Close</string>
+    <string name="web_page_info">Title: %s\nUrl: %s</string>
+    <string name="web_copy_url">Copy Url</string>
+    <string name="web_open_in_browser">Open In Browser</string>
+    <string name="web_input_url">Please enter the url</string>
+    <string name="web_clear_cache_done">Cache cleaning is complete</string>
+    <string name="web_create_download_task">Create download task</string>
+    <string name="web_create_download_tips">Are you sure you want to download the file : %s ?</string>
+    <string name="web_add_mark">Add bookmark</string>
+    <string name="web_input_mark_title">Please enter the bookmark title\n(%s)</string>
+    <string name="web_clear_history">Clear history</string>
+    <string name="web_edit_web_marks">Edit bookmark</string>
+    <string name="web_clear_web_marks">Clear bookmark</string>
+</resources>

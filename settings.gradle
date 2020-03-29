@@ -1,0 +1,2 @@
+include ':app', ':util', ':web', ':videoplayer', ':qrcode', ':manageapps', ':fileselector', ':imageviewer', ':textviewer', ':mediastore', ':calender', ':sudoku', ':drawboard', ':filemanager', ':musicplayer', ':notepad', ':calculator', ':nerverabbit', ':fileclear'
+rootProject.name = 'RoamCatX'

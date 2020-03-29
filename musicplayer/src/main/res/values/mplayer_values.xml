@@ -1,0 +1,7 @@
+<resources>
+    <string name="mplayer_app_name">MusicPlayer</string>
+    <dimen name="mplayer_play_btn_size">50dp</dimen>
+    <dimen name="mplayer_opt_btn_size">40dp</dimen>
+    <dimen name="mplayer_opt_btn_padding">10dp</dimen>
+    <dimen name="mplayer_opt_btn_padding_small">8dp</dimen>
+</resources>

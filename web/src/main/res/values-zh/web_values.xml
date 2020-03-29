@@ -1,0 +1,35 @@
+<resources>
+    <string name="web_app_name">浏览器</string>
+    <string name="web_btn_ok">确定</string>
+    <string name="web_btn_cancel">取消</string>
+    <string name="web_btn_edit">编辑</string>
+    <string name="web_btn_rename">重命名</string>
+    <string name="web_btn_delete">删除</string>
+    <string name="web_copy_success">复制成功</string>
+    <string name="web_geolocation_permission_tips">是否允许页面获取您的地理位置信息？</string>
+    <string name="web_save_image">保存图片</string>
+    <string name="web_save_image_s">保存图片成功</string>
+    <string name="web_save_image_f">保存图片失败</string>
+    <string name="web_select_file_f">选择文件失败</string>
+    <string name="web_tool_add_mark">加入书签</string>
+    <string name="web_tool_marks">我的书签</string>
+    <string name="web_tool_history">历史记录</string>
+    <string name="web_tool_refresh">刷新页面</string>
+    <string name="web_tool_share">分享页面</string>
+    <string name="web_tool_detail">网页详情</string>
+    <string name="web_tool_clear_cache">清空缓存</string>
+    <string name="web_tool_input_url">输入地址</string>
+    <string name="web_tool_close_menu">关闭菜单</string>
+    <string name="web_page_info">标题：%s\n地址：%s</string>
+    <string name="web_copy_url">复制地址</string>
+    <string name="web_open_in_browser">浏览器打开</string>
+    <string name="web_input_url">请输入页面地址</string>
+    <string name="web_clear_cache_done">清理缓存完成</string>
+    <string name="web_create_download_task">创建下载任务</string>
+    <string name="web_create_download_tips">您确定要下载文件“%s”吗？</string>
+    <string name="web_add_mark">添加书签</string>
+    <string name="web_input_mark_title">请输入书签标题\n(%s)</string>
+    <string name="web_clear_history">清空历史记录</string>
+    <string name="web_edit_web_marks">编辑书签</string>
+    <string name="web_clear_web_marks">清空书签</string>
+</resources>

@@ -1,0 +1,28 @@
+build.dependsOn 'readProperties'
+
+task readProperties() {
+    def runTasks = gradle.startParameter.taskNames
+    println("RunTasks gradle.startParameter.taskNames: $runTasks")
+    if (project.releaseTaskName in runTasks) {
+        println("Building release apk...")
+    }
+
+    def config = file(project.releaseStoreFileProperties)
+    if (config.canRead()) {
+        Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(config))
+
+        //读取release签名文件配置并覆盖项目中的签名配置
+        String storeFile = versionProps['storeFile'].toString()
+        String storePassword = versionProps['storePassword'].toString()
+        String keyAlias = versionProps['keyAlias'].toString()
+        String keyPassword = versionProps['keyPassword'].toString()
+        project.storeFile = storeFile
+        project.storePassword = storePassword
+        project.keyAlias = keyAlias
+        project.keyPassword = keyPassword
+    } else {
+        println("Could not read $project.releaseStoreFileProperties")
+        //throw new GradleException("Could not read $project.releaseStoreFileProperties")
+    }
+}

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_launch_gradient"
+        android:orientation="vertical"
+        android:paddingTop="25dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="@string/tab_hot_action"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="@string/ha_action"
+            android:textColor="@color/color_666"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/moreBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="?attr/selectableItemBackground"
+            android:padding="5dp"
+            android:text="@string/btn_more"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="5dp"
+        app:alignContent="stretch"
+        app:alignItems="stretch"
+        app:flexWrap="wrap">
+
+        <TextView
+            android:id="@+id/systemInfoBtn"
+            style="@style/ButtonStrokeStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_margin="4.5dp"
+            android:paddingLeft="4.8dp"
+            android:paddingRight="4.8dp"
+            android:text="@string/ha_system_info"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/systemSettingBtn"
+            style="@style/ButtonStrokeStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_margin="4.5dp"
+            android:paddingLeft="4.8dp"
+            android:paddingRight="4.8dp"
+            android:text="@string/ha_sys_setting"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/matchUrlBtn"
+            style="@style/ButtonStrokeStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_margin="4.5dp"
+            android:paddingLeft="4.8dp"
+            android:paddingRight="4.8dp"
+            android:text="@string/ha_match_url"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/sandboxBtn"
+            style="@style/ButtonStrokeStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_margin="4.5dp"
+            android:paddingLeft="4.8dp"
+            android:paddingRight="4.8dp"
+            android:text="@string/ha_sandbox"
+            android:textSize="14sp" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="@string/ha_info"
+            android:textColor="@color/color_666"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/clipboardBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:padding="5dp"
+            android:text="@string/item_clipboard"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/copyBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:padding="5dp"
+            android:text="@string/btn_copy"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/pasteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="?attr/selectableItemBackground"
+            android:padding="5dp"
+            android:text="@string/btn_paste"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/infoView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="@color/color_666"
+            android:textIsSelectable="true"
+            android:textSize="13sp"
+            tools:text="@string/app_name" />
+    </ScrollView>
+</LinearLayout>

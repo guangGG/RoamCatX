@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <!--    <com.github.piasy.biv.view.BigImageView-->
+    <!--        android:id="@+id/imgvView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        app:failureImage="@drawable/imgv_ic_image_broken"-->
+    <!--        app:optimizeDisplay="true"-->
+    <!--        app:tapToRetry="false" />-->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/imgvViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/imgvToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#88333333"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgvCloseBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/imgv_bg_selector"
+            android:padding="2dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <TextView
+            android:id="@+id/imgvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            tools:text="标题longlonglonglong\n标题" />
+
+        <TextView
+            android:id="@+id/imgvSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="end"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            tools:text="副标题longlonglonglong\n副标题" />
+
+        <ImageView
+            android:id="@+id/imgvMenuBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/imgv_bg_selector"
+            android:padding="2dp"
+            android:src="@android:drawable/ic_menu_more" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/imgvImgs"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="#88333333" />
+</RelativeLayout>

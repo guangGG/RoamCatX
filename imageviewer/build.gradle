@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: '../gradle/config/dependencies.gradle'
+android {
+    compileSdkVersion project.compileSdkVersion as int
+    buildToolsVersion project.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion project.libMinSdkVersion as int
+        targetSdkVersion project.libTargetSdkVersion as int
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$project.appcompatVersion"
+    implementation "androidx.core:core-ktx:$project.coreKtxVersion"
+    testImplementation "junit:junit:$project.junitVersion"
+    androidTestImplementation "androidx.test:runner:$project.runnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$project.espressoVersion"
+
+    // PhotoView，使用起来和原生ImageView一样方便的支持缩放的图片浏览控件（不支持Fresco和二次采样）
+    //implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    // SubsamplingScaleImageView(二次采样比例图像)，用很小内存加载大图，只支持加载本地图片
+    //implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
+
+    // BigImageView在SubsamplingScaleImageView基础上增加用图片加载器(Fresco、Glide)加载网络图片
+    implementation 'com.github.piasy:BigImageViewer:1.5.7' //1.6.0的包会出现闪烁bug，不需要重复引入GlideLoader工具包
+    //implementation 'com.github.piasy:GlideImageLoader:1.6.0'
+    //implementation 'com.github.piasy:GlideImageViewFactory:1.6.0'
+
+    implementation "com.github.bumptech.glide:glide:$project.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$project.glideCompilerVersion"
+
+    // RecyclerView And Adapter
+    implementation "com.google.android.material:material:$project.materialVersion"
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$project.ccRecyclerAdapterVersion"
+
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxjavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxandroidVersion"
+
+    implementation project(':util') //implementation 'gapp.season:SeasonUtil:x.x.x'
+    implementation "androidx.exifinterface:exifinterface:$project.exifinterfaceVersion"
+}

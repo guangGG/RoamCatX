@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:ignore="SmallSp,ContentDescription,HardcodedText">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#757575">
+
+        <ImageView
+            android:id="@+id/mplayerBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <TextView
+            android:id="@+id/mplayerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/mplayerMenu"
+            android:layout_toLeftOf="@+id/mplayerMenu"
+            android:layout_toEndOf="@+id/mplayerBack"
+            android:layout_toRightOf="@+id/mplayerBack"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:maxLines="2"
+            android:text="音乐播放器"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/mplayerMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="?attr/selectableItemBackground"
+            android:padding="5dp"
+            android:text="菜单"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/mplayerListLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mplayerList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/mplayerListEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="?attr/selectableItemBackground"
+                android:padding="5dp"
+                android:text="未播放音乐"
+                android:textColor="#0088FF"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/mplayerLyricLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/mplayerLyric"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textSize="14sp"
+                    tools:text="歌词" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/mplayerCurrentPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#666666"
+            android:textSize="10sp"
+            tools:text="0:20" />
+
+        <SeekBar
+            android:id="@+id/mplayerSeekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="10000"
+            android:paddingLeft="6dp"
+            android:paddingTop="5dp"
+            android:paddingRight="6dp"
+            android:paddingBottom="5dp"
+            android:progress="0"
+            tools:ignore="UnusedAttribute" />
+
+        <TextView
+            android:id="@+id/mplayerDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#666666"
+            android:textSize="10sp"
+            tools:text="12:43" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/mplayerModeBtn"
+            android:layout_width="@dimen/mplayer_opt_btn_size"
+            android:layout_height="@dimen/mplayer_opt_btn_size"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/mplayer_opt_btn_padding_small"
+            android:src="@drawable/mplayer_ic_mode_all" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/mplayerPreBtn"
+            android:layout_width="@dimen/mplayer_opt_btn_size"
+            android:layout_height="@dimen/mplayer_opt_btn_size"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/mplayer_opt_btn_padding"
+            android:src="@drawable/mplayer_ic_pre" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/mplayerPlayBtn"
+            android:layout_width="@dimen/mplayer_play_btn_size"
+            android:layout_height="@dimen/mplayer_play_btn_size"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/mplayer_opt_btn_padding"
+            android:src="@drawable/mplayer_ic_play" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/mplayerNextBtn"
+            android:layout_width="@dimen/mplayer_opt_btn_size"
+            android:layout_height="@dimen/mplayer_opt_btn_size"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/mplayer_opt_btn_padding"
+            android:src="@drawable/mplayer_ic_next" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/mplayerListBtn"
+            android:layout_width="@dimen/mplayer_opt_btn_size"
+            android:layout_height="@dimen/mplayer_opt_btn_size"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/mplayer_opt_btn_padding_small"
+            android:src="@drawable/mplayer_ic_music" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>

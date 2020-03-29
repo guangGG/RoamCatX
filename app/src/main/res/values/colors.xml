@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#757575</color>
+    <color name="colorPrimaryDark">#757575</color>
+    <color name="colorAccent">#0088FF</color>
+    <color name="colorBackground">#F8F8F8</color>
+
+    <color name="colorDivider">#EEEEEE</color>
+    <color name="transparent">#00000000</color>
+    <color name="shadow">#66000000</color>
+    <color name="color_333">#333333</color>
+    <color name="color_666">#666666</color>
+    <color name="color_999">#999999</color>
+    <color name="color_ccc">#CCCCCC</color>
+
+    <color name="color_f66">#FF6666</color>
+    <color name="color_d96">#DD9966</color>
+    <color name="color_cc3">#CCCC33</color>
+    <color name="color_6d6">#66DD66</color>
+    <color name="color_6dd">#66DDDD</color>
+    <color name="color_39d">#3399DD</color>
+    <color name="color_36d">#3366DD</color>
+    <color name="color_83d">#8833DD</color>
+    <color name="color_96b">#9966BB</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="tab_color_on">#000000</color>
+    <color name="tab_color_off">#AAAAAA</color>
+    <color name="launch_gradient_start">#6495ED</color>
+    <color name="launch_gradient_end">#6699EE</color>
+
+    <color name="button_solid_bg_normal">#0088FF</color>
+    <color name="button_solid_bg_press">#880088FF</color>
+    <color name="button_solid_bg_disable">#660088FF</color>
+    <color name="button_solid_text_normal">#FFFFFFFF</color>
+    <color name="button_solid_text_press">#88FFFFFF</color>
+    <color name="button_solid_text_disable">#66FFFFFF</color>
+    <color name="button_stroke_text_normal">#0088FF</color>
+    <color name="button_stroke_text_press">#880088FF</color>
+    <color name="button_stroke_text_disable">#660088FF</color>
+</resources>

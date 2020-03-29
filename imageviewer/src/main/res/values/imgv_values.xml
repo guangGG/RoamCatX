@@ -1,0 +1,5 @@
+<resources>
+    <string name="imgv_app_name">ImageViewer</string>
+    <color name="imgv_transparent">#00000000</color>
+    <color name="imgv_color_btn_pressed">#FFDD9966</color>
+</resources>

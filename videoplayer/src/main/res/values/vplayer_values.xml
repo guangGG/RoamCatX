@@ -1,0 +1,5 @@
+<resources>
+    <string name="vplayer_app_name">VideoPlayer</string>
+    <color name="vplayer_transparent">#00000000</color>
+    <color name="vplayer_color_btn_pressed">#FF336666</color>
+</resources>
