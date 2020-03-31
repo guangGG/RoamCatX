@@ -12,6 +12,7 @@ import androidx.activity.ComponentActivity
 import androidx.multidex.MultiDex
 import com.didichuxing.doraemonkit.DoraemonKit
 import com.rx2androidnetworking.Rx2AndroidNetworking
+import gapp.season.fileclear.FileClearHelper
 import gapp.season.filemanager.FileManager
 import gapp.season.fileselector.FileSelectorHelper
 import gapp.season.imageviewer.ImageViewerHelper
@@ -29,7 +30,6 @@ import gapp.season.roamcat.data.runtime.PluginHelper
 import gapp.season.roamcat.util.SchedulersUtil
 import gapp.season.star.SkyStar
 import gapp.season.star.solar.Solar
-import gapp.season.textviewer.TextViewerHelper
 import gapp.season.util.SeasonUtil
 import gapp.season.util.file.FileShareUtil
 import gapp.season.util.log.LogUtil
@@ -194,15 +194,7 @@ class App : Application() {
         //FileSelector
         FileSelectorHelper.listener = object : FileSelectorHelper.FileSelectorListener {
             override fun onClickFile(activity: Activity, file: File) {
-                when {
-                    ImageViewerHelper.isImage(file) -> ImageViewerHelper.showImage(activity, file.absolutePath)
-                    VideoPlayerHelper.isVideoFile(file) -> VideoPlayerHelper.play(activity, file.absolutePath)
-                    TextViewerHelper.isTextFile(file) -> TextViewerHelper.show(activity, file.absolutePath)
-                    MusicPlayerHelper.isMusicFile(file) -> MusicPlayerHelper.play(activity, file.absolutePath)
-                    else -> {
-                        TextViewerHelper.show(activity, file.absolutePath)
-                    }
-                }
+                FileManager.openFileWithDefault(activity, file)
             }
         }
         //MusicPlayer
@@ -218,6 +210,14 @@ class App : Application() {
         }
         //NotePad
         NoteHelper.init(this, "$baseDir/note")
+        //FileClear
+        FileClearHelper.init("$baseDir/fileclear", object : FileClearHelper.ClearListener {
+            override fun onClickFile(activity: Activity, file: File) {
+                FileManager.openFileWithDefault(activity, file)
+            }
+        })
+        //FileManager
+        FileManager.init(this, "$baseDir/filemanager")
     }
 
     override fun attachBaseContext(base: Context?) {

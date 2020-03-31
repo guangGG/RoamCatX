@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fm_file_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fm_color_press_selector"
+    android:descendantFocusability="blocksDescendants"
+    android:gravity="center_vertical"
+    android:minHeight="42dp"
+    android:orientation="horizontal"
+    tools:ignore="ContentDescription">
+
+    <ImageView
+        android:id="@+id/fm_file_icon"
+        android:layout_width="@dimen/fm_file_icon_size"
+        android:layout_height="@dimen/fm_file_icon_size"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/fm_format_file" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="2dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fm_file_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/fm_content_text_color"
+            android:textSize="@dimen/fm_text_size_m"
+            tools:text="文件名" />
+
+        <LinearLayout
+            android:id="@+id/fm_file_infos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fm_file_size"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start|center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/fm_content_text_color_gray"
+                android:textSize="@dimen/fm_text_size_s"
+                tools:text="文件大小" />
+
+            <TextView
+                android:id="@+id/fm_file_authority"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start|center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/fm_content_text_color_gray"
+                android:textSize="@dimen/fm_text_size_s"
+                tools:text="文件权限" />
+
+            <TextView
+                android:id="@+id/fm_file_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="start|center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/fm_content_text_color_gray"
+                android:textSize="@dimen/fm_text_size_s"
+                tools:text="文件修改时间" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/fm_select_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="gone"
+        tools:visibility="visible" />
+</LinearLayout>

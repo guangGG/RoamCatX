@@ -1,5 +1,6 @@
 package gapp.season.musicplayer
 
+import android.annotation.SuppressLint
 import android.text.TextUtils
 import gapp.season.util.file.FileUtil
 import gapp.season.util.text.StringUtil
@@ -14,6 +15,7 @@ import kotlin.Comparator
  */
 object MusicFileResolver {
     //耗时操作，需在子线程中进行
+    @SuppressLint("DefaultLocale")
     fun getPlayList(path: String?): MusicFileList? {
         if (!path.isNullOrEmpty()) {
             val file = File(path)
@@ -36,7 +38,7 @@ object MusicFileResolver {
                         array.forEach {
                             list.add(it.absolutePath)
                         }
-                        list.sortWith(Comparator { p0, p1 -> StringUtil.compare(p0, p1, "GBK") })
+                        list.sortWith(Comparator { p0, p1 -> StringUtil.compare(p0.toLowerCase(), p1.toLowerCase(), "GBK") })
                         var index = 0
                         list.forEachIndexed { i, it ->
                             run {

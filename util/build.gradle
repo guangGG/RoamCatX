@@ -2,7 +2,7 @@
 // 备注：使用"library+api"方式导入时打release包会报错“Program type already present” of SeasonUtil
 // 源码地址： https://github.com/guangGG/AndroidUtilLib
 
-// aar-version(commit) : v0.0.3(4e7a50c)
+// aar-version(commit) : v0.0.4(10121fb)
 configurations.maybeCreate("default")
 artifacts.add("default", file('SeasonUtil.aar'))
 

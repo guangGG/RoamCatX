@@ -8,7 +8,8 @@
             android:name=".MusicPlayerActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:exported="true"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="gapp.season.musicplayer" />
                 <category android:name="android.intent.category.DEFAULT" />

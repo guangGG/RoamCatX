@@ -2,6 +2,7 @@
 
 package gapp.season.fileselector
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -127,6 +128,7 @@ class FileSelectorActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("DefaultLocale")
     private fun updateUI() {
         if (dir == null || !dir!!.exists()) {
             dir = null
@@ -149,7 +151,7 @@ class FileSelectorActivity : AppCompatActivity() {
                 val d0 = if (p0.isDirectory) 0 else 1
                 val d1 = if (p1.isDirectory) 0 else 1
                 if (d0 == d1) {
-                    return@Comparator StringUtil.compare(p0.name, p1.name, "GBK")
+                    return@Comparator StringUtil.compare(p0.name.toLowerCase(), p1.name.toLowerCase(), "GBK")
                 } else {
                     return@Comparator d0 - d1
                 }

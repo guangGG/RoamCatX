@@ -35,4 +35,10 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$project.espressoVersion"
 
     implementation project(':util') //implementation 'gapp.season:SeasonUtil:x.x.x'
+    // RecyclerView And Adapter
+    implementation "com.google.android.material:material:$project.materialVersion"
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$project.ccRecyclerAdapterVersion"
+    // glide
+    implementation "com.github.bumptech.glide:glide:$project.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$project.glideCompilerVersion"
 }
