@@ -234,10 +234,11 @@ class FileManagerActivity : AppCompatActivity() {
         }
         fmDrawerLayout.addDrawerListener(object : DrawerLayout.SimpleDrawerListener() {
             override fun onDrawerOpened(drawerView: View) {
-                favorAdapter?.setNewData(FileManagerBuffer.fmFavorites)
+                favorAdapter?.setNewData(FileManagerBuffer.fmFavorites) //更新收藏夹
             }
 
             override fun onDrawerClosed(drawerView: View) {
+                fmStack?.getTopFragment()?.updateList() //更新列表
             }
         })
 

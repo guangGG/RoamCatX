@@ -26,6 +26,7 @@ import java.io.File
 
 class FileManagerFragment : Fragment() {
     private var activity: FileManagerActivity? = null
+    private var isTopFragment = false
     var dir: String? = null
     private var toName: String? = null
     private var isDisksDir = false
@@ -51,9 +52,11 @@ class FileManagerFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         activity = context as FileManagerActivity
+        isTopFragment = true
     }
 
     override fun onDetach() {
+        isTopFragment = false
         activity = null
         super.onDetach()
     }
@@ -111,7 +114,7 @@ class FileManagerFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        updateList()
+        if (isTopFragment) updateList()
     }
 
     override fun onDestroyView() {
@@ -121,9 +124,11 @@ class FileManagerFragment : Fragment() {
 
     fun stackResume() { //上层的Fragment移开显示当前Fragment时回调
         updateList()
+        isTopFragment = true
     }
 
     fun stackPause() { //当前正在显示的Fragment被其他Fragment覆盖时回调
+        isTopFragment = false
     }
 
     fun onSelectBtn(selectInterval: Boolean) {
