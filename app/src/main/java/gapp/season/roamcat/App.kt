@@ -217,7 +217,7 @@ class App : Application() {
             }
         })
         //FileManager
-        FileManager.init(this, "$baseDir/filemanager")
+        FileManager.init(this, "$baseDir/filemanager", BuildConfig.DEV)
     }
 
     override fun attachBaseContext(base: Context?) {

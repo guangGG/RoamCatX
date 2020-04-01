@@ -5,6 +5,7 @@ package gapp.season.qrcode
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Vibrator
@@ -22,7 +23,9 @@ class QrcodeScanActivity : AppCompatActivity() {
         private const val REQUEST_CODE_CHOOSE_IMAGE = 1001
     }
 
-    var isShowResult = false
+    private var isShowResult = false
+    private var openFlashligh = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeUtil.setTheme(this, 0)
@@ -34,6 +37,17 @@ class QrcodeScanActivity : AppCompatActivity() {
             innerIntent.type = "image/*"
             val intent = Intent.createChooser(innerIntent, "选择图片")
             startActivityForResult(intent, REQUEST_CODE_CHOOSE_IMAGE)
+        }
+        qrcodeFlashlight.setColorFilter(Color.WHITE)
+        qrcodeFlashlight.setOnClickListener {
+            openFlashligh = !openFlashligh
+            if (openFlashligh) {
+                qrcodeView.openFlashlight()
+                qrcodeFlashlight.setImageResource(R.drawable.qrcode_flashlight_on)
+            } else {
+                qrcodeView.closeFlashlight()
+                qrcodeFlashlight.setImageResource(R.drawable.qrcode_flashlight_off)
+            }
         }
 
         qrcodeView.setDelegate(object : QRCodeView.Delegate {
@@ -104,6 +118,11 @@ class QrcodeScanActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        if (openFlashligh) {
+            openFlashligh = false
+            qrcodeView.closeFlashlight()
+            qrcodeFlashlight.setImageResource(R.drawable.qrcode_flashlight_off)
+        }
         qrcodeView.onDestroy()
         super.onDestroy()
     }

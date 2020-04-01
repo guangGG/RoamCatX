@@ -34,5 +34,6 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$project.espressoVersion"
 
     implementation project(':util') //implementation 'gapp.season:SeasonUtil:x.x.x'
+    //bgaQrcode https://github.com/bingoogolapple/BGAQRCode-Android
     implementation "cn.bingoogolapple:bga-qrcode-zxing:$project.bgaQrcodeVersion"
 }

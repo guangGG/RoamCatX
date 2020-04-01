@@ -29,9 +29,11 @@
     <string name="check_update">Check update</string>
     <string name="check_update_failed">Check update failed</string>
     <string name="has_be_latest_version">This is the latest version</string>
-    <string name="find_new_version">Find new version %s, click to download</string>
+    <string name="find_new_version">Find new version %s</string>
     <string name="clipboard_auto_jump">View clipboard when updated</string>
     <string name="set_language_s_tips">Set the language successfully and take effect after restarting the APP</string>
+    <string name="view_source">View source code</string>
+    <string name="debug_apk_tips">You are using the development debug version, click here to download the official release of the experience</string>
     <!--find-->
     <string name="disable_feature">Disable</string>
     <string name="enable_feature">Enable</string>

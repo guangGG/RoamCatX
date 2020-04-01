@@ -16,8 +16,6 @@ import com.chad.library.adapter.base.BaseViewHolder
 import gapp.season.imageviewer.ImageViewerHelper
 import gapp.season.musicplayer.MusicPlayerHelper
 import gapp.season.textviewer.TextViewerHelper
-import gapp.season.util.file.FileShareUtil
-import gapp.season.util.file.FileTypeUtil
 import gapp.season.util.file.FileUtil
 import gapp.season.util.sys.MemoryUtil
 import gapp.season.util.text.DateUtil
@@ -98,16 +96,7 @@ class FileManagerFragment : Fragment() {
                     if (FileManagerBuffer.isOpenFileMine(context)) {
                         FileManager.openFileWithDefault(activity!!, item)
                     } else {
-                        val suffix = FileUtil.getExtName(item.name)
-                        val pkg = FileManagerBuffer.getOpenMannerPkg(activity!!, suffix)
-                        val cls = FileManagerBuffer.getOpenMannerCls(activity!!, suffix)
-                        if (!suffix.isNullOrEmpty() && !pkg.isNullOrEmpty() && !cls.isNullOrEmpty()) {
-                            FileShareUtil.allowFileUriExposure() //防止Android-N报错: FileUriExposedException
-                            FileTypeUtil.openFileOfComponent(activity!!, item, pkg, cls)
-                        } else {
-                            //todo openAs File
-                            FileManager.openFileWithDefault(activity!!, item)
-                        }
+                        FileManager.openAs(activity!!, item)
                     }
                 }
             }

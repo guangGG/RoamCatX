@@ -23,8 +23,6 @@ import gapp.season.imageviewer.ImageViewerHelper
 import gapp.season.mediastore.MediaStoreHelper
 import gapp.season.musicplayer.MusicPlayerHelper
 import gapp.season.textviewer.TextViewerHelper
-import gapp.season.util.file.FileShareUtil
-import gapp.season.util.file.FileTypeUtil
 import gapp.season.util.file.FileUtil
 import gapp.season.util.log.LogUtil
 import gapp.season.util.task.ThreadPoolExecutor
@@ -151,6 +149,7 @@ class FileManagerActivity : AppCompatActivity() {
                 }
                 inSelectMode = false
                 ToastUtil.showShort("收藏成功")
+                favorAdapter?.setNewData(FileManagerBuffer.fmFavorites)
             } else {
                 ToastUtil.showShort("请选择要收藏的文件")
             }
@@ -158,24 +157,16 @@ class FileManagerActivity : AppCompatActivity() {
         fmToolBtnDetail.setOnClickListener {
             val files = fmStack?.getTopFragment()?.getSelectFiles()
             if (!files.isNullOrEmpty()) {
-                LogUtil.d("detail ${fmStack?.getTopFragment()?.getSelectFiles()}")
-                //todo 详情弹窗
+                FileManager.showFilesDetail(this, files)
             } else {
                 ToastUtil.showShort("请选择文件")
             }
         }
         fmToolBtnOpenAs.setOnClickListener {
-            LogUtil.d("openAs ${fmStack?.getTopFragment()?.getSelectFiles()}")
-            //todo 自定义文件打开方式弹窗
             val files = fmStack?.getTopFragment()?.getSelectFiles()
             if (files?.size == 1 && files[0].isFile) {
-                FileShareUtil.allowFileUriExposure() //防止Android-N报错: FileUriExposedException
-                startActivity(FileTypeUtil.getOpenFileIntent(files[0]))
-                //demo
-                val resolveInfos = FileTypeUtil.getOpenFileResolveInfos(this, files[0])
-                resolveInfos?.forEach {
-                    LogUtil.v("ResolveInfo: pkg-${it.activityInfo.packageName} cls-${it.activityInfo.name}")
-                }
+                FileManager.openAs(this, files[0], true)
+                inSelectMode = false
             } else {
                 ToastUtil.showShort("请选择单个文件")
             }
@@ -262,6 +253,7 @@ class FileManagerActivity : AppCompatActivity() {
                 if (!push) showPath(fmStack?.getTopFragment()?.dir)
             }
         }
+        favorAdapter?.setNewData(FileManagerBuffer.fmFavorites)
         openOriginalPath()
     }
 

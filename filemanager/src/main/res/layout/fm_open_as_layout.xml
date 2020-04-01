@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="ContentDescription,HardcodedText">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <CheckBox
+        android:id="@+id/fmOpenMine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="使用应用内置插件打开全部文件"
+        android:textColor="#0088FF"
+        android:textSize="@dimen/fm_tool_btn_text_size"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/fmOpenAsCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设为默认"
+            android:textColor="#0088FF"
+            android:textSize="@dimen/fm_tool_btn_text_size" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/fmOpenAsRemove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="?attr/selectableItemBackground"
+            android:padding="5dp"
+            android:text="清除默认"
+            android:textColor="#0088FF"
+            android:textSize="@dimen/fm_tool_btn_text_size" />
+
+        <TextView
+            android:id="@+id/fmOpenAsClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="?attr/selectableItemBackground"
+            android:padding="5dp"
+            android:text="清空全部"
+            android:textColor="#0088FF"
+            android:textSize="@dimen/fm_tool_btn_text_size" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fmOpenAsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

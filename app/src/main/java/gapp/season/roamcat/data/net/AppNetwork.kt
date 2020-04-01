@@ -12,6 +12,7 @@ import gapp.season.roamcat.data.net.ssl.SslTrustManager
 import gapp.season.webbrowser.WebViewHelper
 
 object AppNetwork {
+    const val URL_GITHUB_APP = "https://github.com/guangGG/RoamCatX"
     const val URL_DOWNLOAD_APP = "http://poem.ehorizon.top/roamcat/apk-x/RoamCatX.apk"
     const val URL_DOWNLOAD_APP_DEV = "http://poem.ehorizon.top/roamcat/apk-x/RoamCatX_dev.apk"
     const val URL_DOWNLOAD_POEM = "http://poem.ehorizon.top/poetry/poem/Poem.apk"

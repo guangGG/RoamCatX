@@ -29,9 +29,11 @@
     <string name="check_update">检查更新</string>
     <string name="check_update_failed">检查更新失败</string>
     <string name="has_be_latest_version">已经是最新版本了</string>
-    <string name="find_new_version">发现新版本%s，点击下载</string>
+    <string name="find_new_version">发现新版本%s</string>
     <string name="clipboard_auto_jump">剪贴板更新时立即查看</string>
     <string name="set_language_s_tips">设置语言成功，重启APP后生效</string>
+    <string name="view_source">应用源码</string>
+    <string name="debug_apk_tips">您正在使用开发调试版本，点此下载体验正式发布版本</string>
     <!--find-->
     <string name="disable_feature">关闭功能</string>
     <string name="enable_feature">启用功能</string>
