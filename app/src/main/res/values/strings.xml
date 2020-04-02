@@ -32,6 +32,7 @@
     <string name="find_new_version">Find new version %s</string>
     <string name="clipboard_auto_jump">View clipboard when updated</string>
     <string name="set_language_s_tips">Set the language successfully and take effect after restarting the APP</string>
+    <string name="share_friends">Share with friends</string>
     <string name="view_source">View source code</string>
     <string name="debug_apk_tips">You are using the development debug version, click here to download the official release of the experience</string>
     <!--find-->

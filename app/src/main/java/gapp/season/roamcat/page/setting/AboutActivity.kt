@@ -42,6 +42,7 @@ class AboutActivity : BaseActivity() {
                 updateUI()
             }
         }
+        shareFriendsView.setOnClickListener { WebViewHelper.showWebPage(this, AppNetwork.URL_DOWNLOAD_APP_PAGE) }
         if (BuildConfig.DEV) readMeView.visibility = View.VISIBLE
         readMeView.setOnClickListener { WebViewHelper.showWebPage(this, AppNetwork.URL_GITHUB_APP) }
         if (isDebugVersion()) debugTipsView.visibility = View.VISIBLE

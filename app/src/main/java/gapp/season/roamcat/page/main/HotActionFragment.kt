@@ -313,7 +313,6 @@ class HotActionFragment : BaseFragment() {
                                         marks = marks + it.title + "：" + it.url + "\n"
                                     }
                                     infoView.text = "浏览器书签：\n" + marks + "\n应用推荐：\n" +
-                                            "RoamCatX(源码): " + AppNetwork.URL_GITHUB_APP + "\n" +
                                             "RoamCatX(正式版): " + AppNetwork.URL_DOWNLOAD_APP + "\n" +
                                             "RoamCatX(开发版): " + AppNetwork.URL_DOWNLOAD_APP_DEV + "\n" +
                                             "诗文阅读(正式版): " + AppNetwork.URL_DOWNLOAD_POEM
