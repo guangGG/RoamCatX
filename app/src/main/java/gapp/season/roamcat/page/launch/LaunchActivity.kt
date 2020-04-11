@@ -5,12 +5,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import gapp.season.roamcat.R
 import gapp.season.roamcat.page.BaseActivity
 import gapp.season.roamcat.page.main.MainActivity
 import gapp.season.util.tips.AlertUtil
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import permissions.dispatcher.*
 
 @RuntimePermissions
@@ -35,10 +36,16 @@ class LaunchActivity : BaseActivity() {
     }
 
     private fun initAppData() {
-        Handler(Looper.getMainLooper()).postDelayed({
+        /*Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        }, 200)
+        }, 200)*/
+        //在MainScope()中delay的操作不会阻塞主线程，相当于Handler(Looper.getMainLooper()).postDelayed的操作
+        MainScope().launch {
+            delay(200)
+            startActivity(Intent(this@LaunchActivity, MainActivity::class.java))
+            finish()
+        }
     }
 
     @NeedsPermission(

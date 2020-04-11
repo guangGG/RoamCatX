@@ -158,6 +158,9 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$project.runnerVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$project.espressoVersion"
 
+    // 协程(https://github.com/Kotlin/kotlinx.coroutines)
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$project.kotlinxCoroutinesAndroidVersion"
+
     // google
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
     implementation "androidx.multidex:multidex:2.0.1"

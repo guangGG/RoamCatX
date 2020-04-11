@@ -8,8 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ResolveInfo
 import android.graphics.drawable.Drawable
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.widget.CheckBox
 import androidx.appcompat.app.AlertDialog
@@ -25,9 +23,11 @@ import gapp.season.util.file.FileTypeUtil
 import gapp.season.util.file.FileUtil
 import gapp.season.util.sys.ClipboardUtil
 import gapp.season.util.sys.MemoryUtil
-import gapp.season.util.task.ThreadPoolExecutor
 import gapp.season.util.tips.ToastUtil
 import gapp.season.videoplayer.VideoPlayerHelper
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import java.io.File
 
 //手机文件管理推荐ES文件浏览器： http://www.estrongs.com/
@@ -218,7 +218,8 @@ object FileManager {
 
     private fun cacheOpenAsInfos(context: Context) {
         //初始化时预缓存各种打开方式的图标和标签，防止后面使用时出现卡顿
-        ThreadPoolExecutor.getInstance().execute {
+        //GlobalScope.launch 相当于工具类 ThreadPoolExecutor.getInstance().execute
+        GlobalScope.launch {
             val resolveInfos = FileTypeUtil.getOpenFileResolveInfos(context, File(""))
             resolveInfos?.forEach {
                 getResolveLabel(context, it)
@@ -270,19 +271,21 @@ object FileManager {
                 }.show()
         val time = System.currentTimeMillis()
         detailTimeTag = time
-        ThreadPoolExecutor.getInstance().execute {
+        //GlobalScope.launch 相当于工具类 ThreadPoolExecutor.getInstance().execute
+        GlobalScope.launch {
             fileCount = "--"
             try {
                 fileCount = getFileContains(files)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-            Handler(Looper.getMainLooper()).post {
+            //MainScope().launch 相当于 Handler(Looper.getMainLooper()).post
+            MainScope().launch {
                 if (detailTimeTag == time && dialog.isShowing)
                     dialog.setMessage(String.format(format, fileCount, fileSize))
             }
         }
-        ThreadPoolExecutor.getInstance().execute {
+        GlobalScope.launch {
             fileSize = "--"
             try {
                 val size = getFileSize(files)
@@ -290,7 +293,7 @@ object FileManager {
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-            Handler(Looper.getMainLooper()).post {
+            MainScope().launch {
                 if (detailTimeTag == time && dialog.isShowing)
                     dialog.setMessage(String.format(format, fileCount, fileSize))
             }

@@ -25,12 +25,14 @@ import gapp.season.musicplayer.MusicPlayerHelper
 import gapp.season.textviewer.TextViewerHelper
 import gapp.season.util.file.FileUtil
 import gapp.season.util.log.LogUtil
-import gapp.season.util.task.ThreadPoolExecutor
 import gapp.season.util.tips.AlertUtil
 import gapp.season.util.tips.ToastUtil
 import gapp.season.util.view.ThemeUtil
 import gapp.season.videoplayer.VideoPlayerHelper
 import kotlinx.android.synthetic.main.fm_activity.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import java.io.File
 
 @Suppress("SameParameterValue")
@@ -121,12 +123,12 @@ class FileManagerActivity : AppCompatActivity() {
                         "确定", "取消", true) { code, _, _ ->
                     if (code == AlertUtil.POSITIVE_BUTTON) {
                         showLoading("删除中…")
-                        ThreadPoolExecutor.getInstance().execute {
+                        GlobalScope.launch {
                             var count = 0
                             files.forEach {
                                 if (FileUtil.deleteFile(it)) count++
                             }
-                            runOnUiThread {
+                            MainScope().launch {
                                 ToastUtil.showShort("${count}项删除完成")
                                 if (isSafe) {
                                     hideLoading()
